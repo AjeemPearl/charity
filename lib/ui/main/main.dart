@@ -1,10 +1,16 @@
-import 'package:demo_flutter/ui/splash/splash_screen.dart';
+
+import 'package:demo_flutter/ui/welcome/welcome.dart';
 import 'package:demo_flutter/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp( MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //status color
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
+      statusBarColor:Colors.transparent,
       statusBarBrightness: Brightness.dark,
     ));
     return MaterialApp(
@@ -23,7 +29,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
 
-      home:  SplashScreen(),
+      home:  Welcome(),
 
     );
   }
