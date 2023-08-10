@@ -1,9 +1,12 @@
 
 
+import 'package:demo_flutter/ui/sign_up/signup.dart';
 import 'package:demo_flutter/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../utils/generalFunctions.dart';
 import '../login/login.dart';
 
 
@@ -12,6 +15,7 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initState();
     Size size = MediaQuery.of(context).size;
     return  Scaffold(
       body: SizedBox(
@@ -30,7 +34,7 @@ class Welcome extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Welcome To Edu",style: TextStyle(fontWeight:FontWeight.bold),),
+                    const Text("Welcome To Edu",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 16.0)),
                     const SizedBox(height: 20.0,),
                     SvgPicture.asset("assets/icons/chat.svg",height: size.height*0.42,),
                     const SizedBox(height: 40.0,),
@@ -64,7 +68,7 @@ class Welcome extends StatelessWidget {
                       width: size.width*0.9,
                       child: ElevatedButton(
                         onPressed: (){
-                          print("Handle login");
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Signup()));
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(
@@ -80,7 +84,9 @@ class Welcome extends StatelessWidget {
                       ),
 
 
-                    )
+                    ),
+                    const SizedBox(height: 16.0,),
+
 
                   ],
                 )
@@ -93,6 +99,7 @@ class Welcome extends StatelessWidget {
 
     );
   }
+
 }
 
 

@@ -1,9 +1,15 @@
+import 'package:demo_flutter/ui/sign_up/signup.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/generalFunctions.dart';
+
 class LoginScreen extends StatelessWidget{
   Widget build(BuildContext context) {
+    initState();
     Size size = MediaQuery.of(context).size;
   return Scaffold(
     body: SizedBox(
@@ -19,7 +25,7 @@ class LoginScreen extends StatelessWidget{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Login",style: TextStyle(fontWeight:FontWeight.bold, fontSize: 18.0),),
+                  const Text("Login",style: TextStyle(fontWeight:FontWeight.bold, fontSize: 16.0),),
                   const SizedBox(height: 20.0,),
                   SvgPicture.asset("assets/icons/login.svg",height: size.height*0.32,),
                   const SizedBox(height: 10.0,),
@@ -32,6 +38,7 @@ class LoginScreen extends StatelessWidget{
                       borderRadius: BorderRadius.circular(29)
                     ),
                     child: const TextField(
+                      style:TextStyle(fontSize: 14.0),
                       decoration: InputDecoration(
                         icon:Icon(Icons.person,color: KPrimaryColor,),
                         hintText: "Your Email",
@@ -44,7 +51,7 @@ class LoginScreen extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 6.0),
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
                     padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 2),
                     width: size.width*.9,
                     decoration: BoxDecoration(
@@ -52,6 +59,7 @@ class LoginScreen extends StatelessWidget{
                         borderRadius: BorderRadius.circular(29)
                     ),
                     child: const TextField(
+                      style:TextStyle(fontSize: 14.0),
                       obscureText: true,
                       decoration: InputDecoration(
                           icon:Icon(Icons.lock,color: KPrimaryColor,),
@@ -86,13 +94,23 @@ class LoginScreen extends StatelessWidget{
                       child:const Text("Login",style: TextStyle(color:Colors.white),),
                     ),
                   ),
-                  const SizedBox(height: 6.0,),
-                  const Row(
-                    mainAxisAlignment:MainAxisAlignment.center,
-                    children: [
-                    Text("Dont have an account?",style:TextStyle(color: KPrimaryColor),),
-                      Text("Sign up",style:TextStyle(color: KPrimaryColor,fontWeight: FontWeight.bold),)
-                  ],)
+                  const SizedBox(height: 8.0,),
+                  RichText(
+                    text: TextSpan(
+                        text: 'Don\'t have an account?',
+                        style: const TextStyle(color:KPrimaryColor, fontSize: 12.0),
+                        children: <TextSpan>[
+                          TextSpan(text: ' Sign up',
+                            style: const TextStyle(color:KPrimaryColor,fontWeight:FontWeight.bold,fontSize: 12.0),
+                            recognizer: TapGestureRecognizer()..onTap=(){
+                             Navigator.push(context, MaterialPageRoute(builder:(context) =>Signup()));
+                            }
+
+                          )
+                        ]
+                    ),
+                  ),
+                  const SizedBox(height: 16.0,)
 
 
 
@@ -107,5 +125,6 @@ class LoginScreen extends StatelessWidget{
     ),
   );
   }
+
 
 }
