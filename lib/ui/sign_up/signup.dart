@@ -1,3 +1,4 @@
+import 'package:demo_flutter/ui/otp/otp.dart';
 import 'package:demo_flutter/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class Signup extends StatelessWidget{
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    LoginScreen()));
+                                    OtpScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(
