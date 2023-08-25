@@ -1,3 +1,4 @@
+import 'package:demo_flutter/ui/Home/Home.dart';
 import 'package:demo_flutter/ui/sign_up/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class LoginScreen extends StatelessWidget{
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    LoginScreen()));
+                                    HomeScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(
