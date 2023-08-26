@@ -33,7 +33,6 @@ class OtpScreen extends StatelessWidget{
                  width: size.width*.28),
              ),
              SingleChildScrollView(
-
                child: Column(
                  mainAxisAlignment: MainAxisAlignment.center,
                  children: [

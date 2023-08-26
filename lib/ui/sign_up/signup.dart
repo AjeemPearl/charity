@@ -72,6 +72,7 @@ class Signup extends StatelessWidget{
                       style:TextStyle(fontSize: 14.0),
                       obscureText: true,
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(top: 16.0),
                           icon:Icon(Icons.lock,color: KPrimaryColor,),
                           suffixIcon:Icon(Icons.visibility,color: KPrimaryColor,) ,
                           hintText: "Password",
