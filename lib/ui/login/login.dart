@@ -1,3 +1,4 @@
+import 'package:demo_flutter/ui/Detail/Detail.dart';
 import 'package:demo_flutter/ui/Home/Home.dart';
 import 'package:demo_flutter/ui/sign_up/signup.dart';
 import 'package:flutter/gestures.dart';
@@ -81,7 +82,7 @@ class LoginScreen extends StatelessWidget{
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    HomeScreen()));
+                                    DetailScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(
@@ -105,7 +106,7 @@ class LoginScreen extends StatelessWidget{
                           TextSpan(text: ' Sign up',
                             style: const TextStyle(color:KPrimaryColor,fontWeight:FontWeight.bold,fontSize: 12.0),
                             recognizer: TapGestureRecognizer()..onTap=(){
-                             Navigator.push(context, MaterialPageRoute(builder:(context) =>Signup()));
+                             Navigator.push(context, MaterialPageRoute(builder:(context) =>HomeScreen()));
                             }
 
                           )

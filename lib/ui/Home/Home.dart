@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20,),
               Expanded(
                 child:MasonryGridView.builder(
-                  itemCount: 4,
+                  itemCount: categories.length,
                   gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount:2
                   ),
