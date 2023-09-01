@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     initState();
     customTheme();
     return Scaffold(
-
+drawer: Drawer(),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: 12,top: 12, right: 12),
