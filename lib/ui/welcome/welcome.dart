@@ -34,7 +34,7 @@ class Welcome extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Welcome To Edu",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 16.0)),
+                    const Text("Welcome To Salford",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 16.0)),
                     const SizedBox(height: 20.0,),
                     SvgPicture.asset("assets/icons/chat.svg",height: size.height*0.42,),
                     const SizedBox(height: 40.0,),
