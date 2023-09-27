@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../models/Category.dart';
 import '../../utils/constants.dart';
 import '../../utils/generalFunctions.dart';
 class HomeScreen extends StatefulWidget{
@@ -18,7 +19,44 @@ class _HomeScreenState extends State<HomeScreen> {
     initState();
     customTheme();
     return Scaffold(
-drawer: Drawer(),
+      drawerEnableOpenDragGesture: true,
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Abhishek Mishra"),
+              accountEmail: Text("abhishekm977@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.orange,
+                child: Text(
+                  "A",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home), title: Text("Home"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings), title: Text("Settings"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contacts), title: Text("Contact Us"),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(left: 12,top: 12, right: 12),
@@ -27,8 +65,30 @@ drawer: Drawer(),
             children: [
               Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset("assets/icons/line.svg",height: 30, width: 30,),
-                  Image.asset("assets/images/free-circle-png.jpg", height: 40, width: 60,)
+                  Builder(
+                    builder: (context) => // Ensure Scaffold is in context
+                    GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/line.svg",
+                            height: 30,
+                            width: 30,
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  Image.asset(
+                    "assets/images/free-circle-png.jpg",
+                    height: 40,
+                    width: 60,
+                  ),
+
                 ],
               ),
               const SizedBox(height: 30.0,),
@@ -60,42 +120,42 @@ drawer: Drawer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Category",style:KTitleTextStyle,),
+                  const Text("Category",style:kTitleTextStyle,),
                   Text("See All",style:KSubTitleTextStyle.copyWith(color:KBlue),),
                 ],
               ),
               SizedBox(height: 20,),
               Expanded(
                 child:MasonryGridView.builder(
-                  itemCount: categories.length,
-                  gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:2
-                  ),
-                  itemBuilder: (context,index){
-                    return Container(
-                      padding: EdgeInsets.all(4.0),
-                      child: Stack(
-                        children: [
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(categories[index].image),),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(padding:EdgeInsets.only(left: 10.0, top: 10),
-                              child: Text(categories[index].name, style: KTitleTextStyle,)),
-                              Padding(padding:EdgeInsets.only(left: 10,top: 2),
-                                  child: Text('${categories[index].numOfCourses} Courses', style: TextStyle(
-                                    color: KText.withOpacity(.5),
-                                    fontSize: 10
-                                  ),)),
-                            ],
-                          )
-                          
-                        ],
-                      ),
-                    );
-                  }
+                    itemCount: categories.length,
+                    gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:2
+                    ),
+                    itemBuilder: (context,index){
+                      return Container(
+                        padding: EdgeInsets.all(4.0),
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(categories[index].image),),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(padding:EdgeInsets.only(left: 10.0, top: 10),
+                                    child: Text(categories[index].name, style: kTitleTextStyle,)),
+                                Padding(padding:EdgeInsets.only(left: 10,top: 2),
+                                    child: Text('${categories[index].numOfCourses} Courses', style: TextStyle(
+                                        color: KText.withOpacity(.5),
+                                        fontSize: 10
+                                    ),)),
+                              ],
+                            )
+
+                          ],
+                        ),
+                      );
+                    }
 
                 ),
               ),
@@ -111,25 +171,4 @@ drawer: Drawer(),
   }
 }
 
-class Category {
-  final String name;
-  final int numOfCourses;
-  final String image;
 
-  Category(this.name, this.numOfCourses, this.image);
-}
-
-List<Category> categories = categoriesData
-    .map((item) => Category(item['name'] as String, item['courses'] as int, item['image'] as String))
-    .toList();
-
-var categoriesData = [
-  {"name": "Marketing", 'courses': 17, 'image': "assets/images/marketing.png"},
-  {"name": "UX Design", 'courses': 25, 'image': "assets/images/ux_design.png"},
-  {
-    "name": "Photography",
-    'courses': 13,
-    'image': "assets/images/photography.png"
-  },
-  {"name": "Business", 'courses': 17, 'image': "assets/images/business.png"},
-];

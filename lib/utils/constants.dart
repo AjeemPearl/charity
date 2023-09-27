@@ -17,7 +17,7 @@ const KSubHeadingTextStyle = TextStyle(
     color: Color(0xFF616888),
     height: 2.0,
 );
-const KTitleTextStyle = TextStyle(
+const kTitleTextStyle = TextStyle(
     fontSize: 14.0,
     color: KText,
     fontWeight: FontWeight.bold
