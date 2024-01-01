@@ -38,14 +38,14 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.black)
         )
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Your App Title'),
-        ),
-        body: _buildBody(context), // Call _buildBody here
-      ),
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text('Your App Title'),
+      //   ),
+      //   body: _buildBody(context), // Call _buildBody here
+      // ),
 
-      // home:  const Welcome(),
+      home:  const Welcome(),
 
     );
   }

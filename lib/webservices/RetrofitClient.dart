@@ -12,4 +12,7 @@ abstract class RetrofitClient{
 
   @GET(getPhotos)
   Future<List<Photos>> getUsers();
+
+
+
 }
